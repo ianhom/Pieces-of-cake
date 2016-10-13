@@ -38,8 +38,8 @@ int main(void)
     }
   
     /********************************* 4th test *******************************/
-    u32d = v=u32a + s32b;
-    if(vd > 0)
+    u32d = u32a + s32b;
+    if(u32d > 0)
     {
         printf("Positive\n");    // Do this, sum = 4294967292
     }
