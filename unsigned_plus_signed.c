@@ -13,7 +13,7 @@ int main(void)
     }
     else
     {
-        printf("Negative\n")
+        printf("Negative\n");
     }
     
     /********************************* 2nd test *******************************/
@@ -23,7 +23,7 @@ int main(void)
     }
     else
     {
-        printf("Negative\n")
+        printf("Negative\n");
     }
     
     /********************************* 3rd test *******************************/
@@ -34,7 +34,7 @@ int main(void)
     }
     else
     {
-        printf("Negative\n")     // Do this, sum = -4
+        printf("Negative\n");    // Do this, sum = -4
     }
   
     /********************************* 4th test *******************************/
@@ -45,7 +45,7 @@ int main(void)
     }
     else
     {
-        printf("Negative\n")
+        printf("Negative\n");
     }
     return 0;
 }
