@@ -1,3 +1,7 @@
+/*
+If a signed value plus an unsigned value, the signed value will be transformed as an unsigned value(if it is a negative one, it will become a huge positive unsigned value), and then do the plus operation
+If we make the above sum "=" to a signed value, signed value will NOT be transformed
+*/
 #include <stdio.h>
 
 int main(void)
