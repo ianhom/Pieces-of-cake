@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAX_NUM    5
+#define MAX_NUM       (5)
 typedef char ARRAY[MAX_NUM];
 typedef struct _T
 {
@@ -10,7 +10,7 @@ typedef struct _T
 TT tt;
 
 
-TT Test_fn()
+TT Test_fn(void)
 {
     TT aTemp;
     int i;
