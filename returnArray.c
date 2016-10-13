@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #define MAX_NUM    5
 typedef char ARRAY[MAX_NUM];
 typedef struct _T
