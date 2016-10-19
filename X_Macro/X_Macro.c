@@ -36,7 +36,7 @@ const PF_FUNC cg_apfFuncTable[] =
 */
 
 
-4、定义函数名字符串数组
+//4、定义函数名字符串数组
 const char* cg_apcFuncName[] = 
 {
 #define X(name) #name,               //重定义X宏定义为函数名的字符串
