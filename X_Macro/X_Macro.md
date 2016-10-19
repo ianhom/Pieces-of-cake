@@ -47,7 +47,7 @@ LIST                                 //根据上一行宏定义生成3个函数�
 #undef X                             //取消X宏定义的内容
 };
 
-4、定义函数名字符串数组
+//4、定义函数名字符串数组
 const char* cg_apcFuncName[] = 
 {
 #define X(name) #name,               //重定义X宏定义为函数名的字符串
@@ -60,6 +60,6 @@ LIST                                 //根据上一行宏定义生成3个函数�
 有了这个基础，可以很容易追加相关代码块，例如为每个函数定义一个变量计算函数调用次数。   
 ```c
 #define X(name) unsigned int name##_CallCnt = 0;
-LIST                //将生成代码为：Function_X_CallCnt = 0;
+LIST                                 //将生成代码为：Function_X_CallCnt = 0;
 #undef X
 ```
