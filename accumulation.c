@@ -62,3 +62,13 @@ uint test6 (uint32 a, uint32 b)
 {
     return (fn(b) - fn(a) + a);
 }
+
+/* 更简洁，可重入的写法 */
+uint32 test7(uint32 a, uint32 b)
+{
+    if(a == b)
+    {
+        return a;
+    }
+    return a + test5(a+1,b);
+}
