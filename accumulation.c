@@ -70,5 +70,5 @@ uint32 test7(uint32 a, uint32 b)
     {
         return a;
     }
-    return a + test5(a+1,b);
+    return a + test7(a+1,b);
 }
