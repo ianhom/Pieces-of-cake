@@ -17,10 +17,14 @@ char* GetStrFromBuff(char *pu8Buff, unsigned int u32Head, unsigned int u32Size)
 {
     static char au8Res[MAX_CNT_TEMP]; 
     unsigned int u32Index = 0;
-    do
+    while(1)
     {
         au8Res[u32Index] = puc8Buff[(Head+unIndex)%u32Size];
+        if((au8Res[u32Index] == '\r') && (puc8Buff[(Head+unIndex)%u32Size] == '\n')||(u32Index > u32Size))
+        {
+            break;
+        }
         u32Index++;
-    }while(au8Res[u32Index] != '\r')
+    }
     return au8Res;
 }
