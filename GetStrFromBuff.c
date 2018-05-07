@@ -20,7 +20,7 @@ char* GetStrFromBuff(char *pu8Buff, unsigned int u32Head, unsigned int u32Size)
     while(1)
     {
         au8Res[u32Index] = puc8Buff[(Head+unIndex)%u32Size];
-        if((au8Res[u32Index] == '\r') && (puc8Buff[(Head+unIndex)%u32Size] == '\n')||(u32Index > u32Size))
+        if((au8Res[u32Index] == '\r') && (puc8Buff[(Head+unIndex+1)%u32Size] == '\n')||(u32Index > u32Size))
         {
             break;
         }
