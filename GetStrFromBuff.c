@@ -11,11 +11,11 @@
 
 #include <stdio.h>
 
-#defien MAX_CNT_TEMP  128
+#defien MAX_CNT_TEMP  (128)  /* Result buffer length */
 
 char* GetStrFromBuff(char *pu8Buff, unsigned int u32Head, unsigned int u32Size)
 {
-    static char au8Res[MAX_CNT_TEMP]; 
+    static char au8Res[MAX_CNT_TEMP];   /* Result buffer */
     unsigned int u32Index = 0;
     while(1)
     {
@@ -25,9 +25,9 @@ char* GetStrFromBuff(char *pu8Buff, unsigned int u32Head, unsigned int u32Size)
             break;
         }
         u32Index++;
-        if(u32Index > u32Size)
+        if(u32Index > (2*u32Size))  /* The last try */
         {
-            return 0; /* Do NOT find it */
+            return NULL; /* Do NOT find it */
         }
     }
     return au8Res;
