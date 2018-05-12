@@ -25,7 +25,7 @@ char* GetStrFromBuff(char *pu8Buff, unsigned int u32Head, unsigned int u32Size)
             break;
         }
         u32Index++;
-        if(u32Index > (2*u32Size))  /* The last try */
+        if((u32Index > (2*u32Size)) || (u32Index >= MAX_CNT_TEMP))  /* The last try */
         {
             return NULL; /* Do NOT find it */
         }
