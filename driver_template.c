@@ -24,22 +24,48 @@ uint32 XXX_Init(T_DRV_PAPA *ptDrvPara)
 
 uint32 XXX_Ctrl(T_DRV_PAPA *ptDrvPara)
 {
+    uint8 u8Ch;
+    /* Check if the input parameters is valid or NOT */
+    if((NULL == ptDrvPara) || (ptDrvPara->u8Ch >= MAX_NUM_XXX))
+    {
+        return SW_ERROR;
+    }
     return SW_OK;
 }
 
 uint32 XXX_Read(T_DATA_OP *ptDataOp)
 {
+    uint8 u8Ch;
+    /* Check if the input parameters is valid or NOT */
+    if((NULL == ptDataOp) || (ptDataOp->u8Ch >= MAX_NUM_XXX))
+    {
+        return SW_ERROR;
+    }
     return SW_OK;
 }
 
 uint32 XXX_Write(T_DATA_OP *ptDataOp)
 {
+    uint8 u8Ch;
+    /* Check if the input parameters is valid or NOT */
+    if((NULL == ptDataOp) || (ptDataOp->u8Ch >= MAX_NUM_XXX))
+    {
+        return SW_ERROR;
+    }
     return SW_OK;
 }
 
 void XXX_ISR_HANDLER(void)
 {
-
+    T_CB_PARA tCBPara;
+    uint8 u8Ch; /* Try to get the channel */
+    /* Get the type of interrupting */
+    
+    /* Call the callback function if it is available */
+    if(sg_apfCB[u8Ch])
+    {
+        sg_apfCB[u8Ch](&tCBPara);
+    }
     return;
 }
 
