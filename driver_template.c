@@ -2,7 +2,7 @@
 
 PF_CALLBACK *sg_apfCB[MAX_NUM_XXX] = {NULL};
 
-uint32 XXX_Init(T_DRV_PAPA *ptDrvPara)
+static uint32 XXX_Init(T_DRV_PAPA *ptDrvPara)
 {
     uint8 u8Ch;
     /* Check if the input parameters is valid or NOT */
@@ -22,7 +22,7 @@ uint32 XXX_Init(T_DRV_PAPA *ptDrvPara)
     return SW_OK;
 }
 
-uint32 XXX_Ctrl(T_DRV_PAPA *ptDrvPara)
+static uint32 XXX_Ctrl(T_DRV_PAPA *ptDrvPara)
 {
     uint8 u8Ch;
     /* Check if the input parameters is valid or NOT */
@@ -33,7 +33,7 @@ uint32 XXX_Ctrl(T_DRV_PAPA *ptDrvPara)
     return SW_OK;
 }
 
-uint32 XXX_Read(T_DATA_OP *ptDataOp)
+static uint32 XXX_Read(T_DATA_OP *ptDataOp)
 {
     uint8 u8Ch;
     /* Check if the input parameters is valid or NOT */
@@ -44,7 +44,7 @@ uint32 XXX_Read(T_DATA_OP *ptDataOp)
     return SW_OK;
 }
 
-uint32 XXX_Write(T_DATA_OP *ptDataOp)
+static uint32 XXX_Write(T_DATA_OP *ptDataOp)
 {
     uint8 u8Ch;
     /* Check if the input parameters is valid or NOT */
@@ -52,6 +52,24 @@ uint32 XXX_Write(T_DATA_OP *ptDataOp)
     {
         return SW_ERROR;
     }
+    return SW_OK;
+}
+
+uint32 XXX_Reg(T_DEV_PARA *ptDevPara)
+{
+    T_DEV tDev;
+    /* Check if the input parameters is valid or NOT */
+    if((NULL == ptDevPara) || (ptDevPara->u8Ch >= MAX_NUM_XXX))
+    {
+        return SW_ERROR;
+    }
+    
+    tDev.u8Ch        = ptDevPara->u8Ch;
+    tDev.tOp.pfInit  = XXX_Init;
+    tDev.tOp.pfCtrl  = XXX_Ctrl;
+    tDev.tOp.pfRead  = XXX_Read;
+    tDev.tOp.pfWrite = XXX_Write;
+    Dev_Regster(&tDev);
     return SW_OK;
 }
 
