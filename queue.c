@@ -31,7 +31,7 @@ T_QUEUE* Queue_Init(uint8 u8MaxElm, uint16 u16Len)
     return ptQUeue;
 }
 
-BYTE Queue_Deinit(T_QUEUE* ptQueue)
+uint8 Queue_Deinit(T_QUEUE* ptQueue)
 {
     if(NULL == ptQueue)
     {
@@ -44,8 +44,7 @@ BYTE Queue_Deinit(T_QUEUE* ptQueue)
     }
     return SW_OK;
 }
-
-BYTE Queue_Full(T_QUEUE* ptQueue)
+uint8 Queue_Full(T_QUEUE* ptQueue)
 {
     if(NULL == ptQueue)
     {
@@ -59,7 +58,7 @@ BYTE Queue_Full(T_QUEUE* ptQueue)
     reuturn (ptQueue->u8MaxElm - ptQueue->u8Cnt);
 }
 
-BYTE Queue_Empty(T_QUEUE* ptQueue)
+uint8 Queue_Empty(T_QUEUE* ptQueue)
 {
     if(NULL == ptQueue)
     {
@@ -70,4 +69,14 @@ BYTE Queue_Empty(T_QUEUE* ptQueue)
         return SW_OK;
     }
     return SW_ERROR;
+}
+
+uint8 Queue_In(T_QUEUE* ptQueue)
+{
+
+}
+
+uint8 Queue_Out(T_QUEUE* ptQueue)
+{
+
 }
