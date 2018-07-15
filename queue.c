@@ -71,9 +71,25 @@ uint8 Queue_Empty(T_QUEUE* ptQueue)
     return SW_ERROR;
 }
 
-uint8 Queue_In(T_QUEUE* ptQueue)
+uint8 Queue_In(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
 {
-
+    uint16 u16Index;
+    if((NULL == ptQueue)||(NULL == pu8Data)||(u16Len > ptQUeue->u16Len))
+    {
+        return SW_ERROR;
+    }
+    if(ptQueue->u8Cnt >= ptQueue->u8MaxElm)
+    {
+        return SW_ERROR;
+    }
+    for(u16Index = 0; u16Index < u16Len; u16Index++)
+    {
+        ptQueue->au8Data[u16Index] = pu8Data[u16Index];
+    }
+    ptQueue->u8Tail = (ptQueue->u8Tail + 1) % ptQueue->u8MaxElm;
+    ptQueue->u8Cnt++;
+    
+    return SW_OK;
 }
 
 uint8 Queue_Out(T_QUEUE* ptQueue)
