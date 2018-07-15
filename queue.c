@@ -44,3 +44,30 @@ BYTE Queue_Deinit(T_QUEUE* ptQueue)
     }
     return SW_OK;
 }
+
+BYTE Queue_Full(T_QUEUE* ptQueue)
+{
+    if(NULL == ptQueue)
+    {
+        return SW_ERROR;
+    }
+    if(ptQueue->u8Cnt > ptQueue->u8MaxElm)
+    {
+        return SW_ERROR;
+    }
+    
+    reuturn (ptQueue->u8MaxElm - ptQueue->u8Cnt);
+}
+
+BYTE Queue_Empty(T_QUEUE* ptQueue)
+{
+    if(NULL == ptQueue)
+    {
+        return SW_ERROR;
+    }
+    if (0 == ptQueue->u8Cnt)
+    {
+        return SW_OK;
+    }
+    return SW_ERROR;
+}
