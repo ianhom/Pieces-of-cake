@@ -92,7 +92,23 @@ uint8 Queue_In(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
     return SW_OK;
 }
 
-uint8 Queue_Out(T_QUEUE* ptQueue)
+BYTE Queue_Out(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
 {
-
+    uint16 u16Index;
+    if((NULL == ptQueue)||(NULL == pu8Data)||(u16Len > ptQUeue->u16Len))
+    {
+        return SW_ERROR;
+    }
+    
+    if(0 == ptQueue->u8Cnt)
+    {
+        return SW_ERROR;
+    }
+    for(u16Index = 0; u16Index < u16Len; u16Index++)
+    {
+        pu8Data[u16Index] = ptQueue->au8Data[u16Index];
+    }
+    ptQueue->u8Head = (ptQueue->u8Head + 1) % ptQueue->u8MaxElm;
+    ptQueue->u8Cnt--;
+    return SW_OK;
 }
