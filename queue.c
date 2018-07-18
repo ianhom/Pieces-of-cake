@@ -1,3 +1,13 @@
+/******************************************************************************
+* File       : Queue.c
+* Function   : General queue operation
+* Description: To be done.           
+* Version    : V1.00
+* Author     : Ian
+* Date       : 18th Jul 2018
+* History    :  No.  When           Who           What
+*               1    18/jul/2018    Ian           Create
+******************************************************************************/
 typedef struct _T_QUEUE
 {
     uint8  u8MaxElm;
@@ -12,8 +22,26 @@ typedef struct _T_QUEUE
 
 volatile static uint16 sg_u16QueueCnt = 0;
 
+/******************************************************************************
+* Name       : T_QUEUE* Queue_Init(uint8 u8MaxElm, uint16 u16Len)
+* Function   : Init a new queue
+* Input      : uint8  u8MaxElm    1~255     The maximum of elements in the queue
+*              uint16 u16Len      1~65535   The length of each element in byte
+* Output:    : None
+* Return     : SW_OK   Successful operation
+*            : SW_ERR  Failed operation
+*              1~254   Event which is not processed.
+* Description: To be done
+* Version    : V1.00
+* Author     : Ian
+* Date       : 18th Jul 2018
+******************************************************************************/
 T_QUEUE* Queue_Init(uint8 u8MaxElm, uint16 u16Len)
 {
+    if((0 == u8MaxElm)||(0 == u16Len))
+    {
+        return SW_ERROR;
+    }
     T_QUEUE *ptQueue = (T_QUEUE*)malloc(u8MaxElm*u16Len+sizeof(T_QUEUE));
     if(NULL == ptQueue)
     {
