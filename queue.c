@@ -28,9 +28,8 @@ volatile static uint16 sg_u16QueueCnt = 0;
 * Input      : uint8  u8MaxElm    1~255     The maximum of elements in the queue
 *              uint16 u16Len      1~65535   The length of each element in byte
 * Output:    : None
-* Return     : SW_OK   Successful operation
-*            : SW_ERR  Failed operation
-*              1~254   Event which is not processed.
+* Return     : SW_OK     Successful operation
+*            : SW_ERROR  Failed operation
 * Description: To be done
 * Version    : V1.00
 * Author     : Ian
@@ -59,6 +58,18 @@ T_QUEUE* Queue_Init(uint8 u8MaxElm, uint16 u16Len)
     return ptQUeue;
 }
 
+/******************************************************************************
+* Name       : uint8 Queue_Deinit(T_QUEUE* ptQueue)
+* Function   : Deinit a new queue
+* Input      : T_QUEUE* ptQueue             The queue to be deinited
+* Output:    : None
+* Return     : SW_OK     Successful operation
+*            : SW_ERROR  Failed operation
+* Description: To be done
+* Version    : V1.00
+* Author     : Ian
+* Date       : 18th Jul 2018
+******************************************************************************/
 uint8 Queue_Deinit(T_QUEUE* ptQueue)
 {
     if(NULL == ptQueue)
