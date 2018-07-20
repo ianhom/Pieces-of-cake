@@ -83,13 +83,26 @@ uint8 Queue_Deinit(T_QUEUE* ptQueue)
     }
     return SW_OK;
 }
+
+/******************************************************************************
+* Name       : uint8 Queue_Full(T_QUEUE* ptQueue)
+* Function   : Check if the queue if full or NOT
+* Input      : T_QUEUE* ptQueue             The queue to be checked
+* Output:    : None
+* Return     : 1~255     Rest elements
+*            : SW_ERROR  Failed operation or Full
+* Description: To be done
+* Version    : V1.00
+* Author     : Ian
+* Date       : 18th Jul 2018
+******************************************************************************/
 uint8 Queue_Full(T_QUEUE* ptQueue)
 {
     if(NULL == ptQueue)
     {
         return SW_ERROR;
     }
-    if(ptQueue->u8Cnt > ptQueue->u8MaxElm)
+    if(ptQueue->u8Cnt >= ptQueue->u8MaxElm)
     {
         return SW_ERROR;
     }
@@ -97,6 +110,19 @@ uint8 Queue_Full(T_QUEUE* ptQueue)
     reuturn (ptQueue->u8MaxElm - ptQueue->u8Cnt);
 }
 
+/******************************************************************************
+* Name       : uint8 Queue_Empty(T_QUEUE* ptQueue)
+* Function   : Init a new queue
+* Input      : uint8  u8MaxElm    1~255     The maximum of elements in the queue
+*              uint16 u16Len      1~65535   The length of each element in byte
+* Output:    : None
+* Return     : SW_OK     Successful operation
+*            : SW_ERROR  Failed operation
+* Description: To be done
+* Version    : V1.00
+* Author     : Ian
+* Date       : 18th Jul 2018
+******************************************************************************/
 uint8 Queue_Empty(T_QUEUE* ptQueue)
 {
     if(NULL == ptQueue)
@@ -110,6 +136,19 @@ uint8 Queue_Empty(T_QUEUE* ptQueue)
     return SW_ERROR;
 }
 
+/******************************************************************************
+* Name       : T_QUEUE* Queue_Init(uint8 u8MaxElm, uint16 u16Len)
+* Function   : Init a new queue
+* Input      : uint8  u8MaxElm    1~255     The maximum of elements in the queue
+*              uint16 u16Len      1~65535   The length of each element in byte
+* Output:    : None
+* Return     : SW_OK     Successful operation
+*            : SW_ERROR  Failed operation
+* Description: To be done
+* Version    : V1.00
+* Author     : Ian
+* Date       : 18th Jul 2018
+******************************************************************************/
 uint8 Queue_In(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
 {
     uint16 u16Index;
@@ -131,6 +170,19 @@ uint8 Queue_In(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
     return SW_OK;
 }
 
+/******************************************************************************
+* Name       : BYTE Queue_Out(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
+* Function   : Init a new queue
+* Input      : uint8  u8MaxElm    1~255     The maximum of elements in the queue
+*              uint16 u16Len      1~65535   The length of each element in byte
+* Output:    : None
+* Return     : SW_OK     Successful operation
+*            : SW_ERROR  Failed operation
+* Description: To be done
+* Version    : V1.00
+* Author     : Ian
+* Date       : 18th Jul 2018
+******************************************************************************/
 BYTE Queue_Out(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
 {
     uint16 u16Index;
