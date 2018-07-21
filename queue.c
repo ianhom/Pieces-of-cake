@@ -1,5 +1,5 @@
 /******************************************************************************
-* File       : Queue.c
+* File       : queue.c
 * Function   : General queue operation
 * Description: To be done.           
 * Version    : V1.00
