@@ -1,25 +1,15 @@
 /******************************************************************************
 * File       : queue.c
-* Function   : General queue operation
-* Description: To be done.           
+* Function   : General queue operation     
 * Version    : V1.00
 * Author     : Ian
 * Date       : 18th Jul 2018
 * History    :  No.  When           Who           What
 *               1    18/jul/2018    Ian           Create
 ******************************************************************************/
-typedef struct _T_QUEUE
-{
-    uint8  u8MaxElm;
-    uint8  u8Head;
-    uint8  u8Tail;
-    uint8  u8Cnt;
-    uint16 u16Len;
-    uint8  au8Data[1];
-}T_QUEUE;
+#include "queue.h"
 
-#define MAX_NUM_QUEUE                 (0xFFFF)
-
+/* Queue counter */
 volatile static uint16 sg_u16QueueCnt = 0;
 
 /******************************************************************************
@@ -30,7 +20,6 @@ volatile static uint16 sg_u16QueueCnt = 0;
 * Output:    : None
 * Return     : SW_OK     Successful operation
 *            : SW_ERROR  Failed operation
-* Description: To be done
 * Version    : V1.00
 * Author     : Ian
 * Date       : 18th Jul 2018
@@ -65,7 +54,6 @@ T_QUEUE* Queue_Init(uint8 u8MaxElm, uint16 u16Len)
 * Output:    : None
 * Return     : SW_OK     Successful operation
 *            : SW_ERROR  Failed operation
-* Description: To be done
 * Version    : V1.00
 * Author     : Ian
 * Date       : 18th Jul 2018
@@ -91,7 +79,6 @@ uint8 Queue_Deinit(T_QUEUE* ptQueue)
 * Output:    : None
 * Return     : 1~255     Rest elements
 *            : SW_ERROR  Failed operation or Full
-* Description: To be done
 * Version    : V1.00
 * Author     : Ian
 * Date       : 18th Jul 2018
@@ -118,7 +105,6 @@ uint8 Queue_Full(T_QUEUE* ptQueue)
 * Output:    : None
 * Return     : SW_OK     Successful operation
 *            : SW_ERROR  Failed operation
-* Description: To be done
 * Version    : V1.00
 * Author     : Ian
 * Date       : 18th Jul 2018
@@ -137,14 +123,13 @@ uint8 Queue_Empty(T_QUEUE* ptQueue)
 }
 
 /******************************************************************************
-* Name       : T_QUEUE* Queue_Init(uint8 u8MaxElm, uint16 u16Len)
+* Name       : uint8 Queue_In(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
 * Function   : Init a new queue
 * Input      : uint8  u8MaxElm    1~255     The maximum of elements in the queue
 *              uint16 u16Len      1~65535   The length of each element in byte
 * Output:    : None
 * Return     : SW_OK     Successful operation
 *            : SW_ERROR  Failed operation
-* Description: To be done
 * Version    : V1.00
 * Author     : Ian
 * Date       : 18th Jul 2018
@@ -178,7 +163,6 @@ uint8 Queue_In(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
 * Output:    : None
 * Return     : SW_OK     Successful operation
 *            : SW_ERROR  Failed operation
-* Description: To be done
 * Version    : V1.00
 * Author     : Ian
 * Date       : 18th Jul 2018
@@ -203,3 +187,5 @@ BYTE Queue_Out(T_QUEUE* ptQueue, uint8 *pu8Data, uint16 u16Len)
     ptQueue->u8Cnt--;
     return SW_OK;
 }
+
+/* End of file */
