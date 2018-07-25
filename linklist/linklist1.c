@@ -95,13 +95,31 @@ NODE* LinkList_Add_Node(uint16 u16Len, uint8 *pu8Data)
 ******************************************************************************/
 NODE* LinkList_Del_Node(NODE *ptNode)
 {
+    NODE* ptTemp;
     if(NULL == ptNode)
     {
         return NULL;
     }
     
+    ptTemp = sg_ptHead;
+    
     if(sg_ptHead == ptNode)
     {
         sg_ptHead = ptNode->ptNext;
     }
+    while(ptTemp->ptNext)
+    {
+        if(ptTemp->ptNext == ptNode)
+        {
+            ptTemp->ptNext = ptNode->ptNext;
+            if(sg_ptTail == ptNode)
+            {
+                sg_ptTail = ptTemp;
+            }
+            free(ptNode);
+            return ptNode;
+        }
+        ptTemp = ptTemp->ptNext;
+    }
+    return NULL;
 }
