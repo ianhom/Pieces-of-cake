@@ -40,6 +40,19 @@ WORD32 Q_init(T_Q *ptQ)
     sg_atQ[u8Idx].u8Cnt    = 0;
     
     return SW_OK;
+}
+
+WORD32 Q_FULL(uint8 u8Ch)
+{
+    if((NULL == ptQ)||(NULL == ptQ->pu8Data))
+    {
+        return SW_ERR;
+    }
     
+    if(sg_atQ[u8Ch-1].u8MaxElm == sg_atQ[u8Ch-1].u8Cnt)
+    {
+        return SW_ERR;
+    }
     
+    return SW_OK;
 }
