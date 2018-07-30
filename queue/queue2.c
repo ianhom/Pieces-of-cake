@@ -42,14 +42,20 @@ WORD32 Q_init(T_Q *ptQ)
     return SW_OK;
 }
 
-WORD32 Q_FULL(uint8 u8Ch)
-{
-    if((NULL == ptQ)||(NULL == ptQ->pu8Data))
+WORD32 Q_Full(uint8 u8Ch)
+{  
+    if(sg_atQ[u8Ch-1].u8MaxElm == sg_atQ[u8Ch-1].u8Cnt)
     {
         return SW_ERR;
     }
     
-    if(sg_atQ[u8Ch-1].u8MaxElm == sg_atQ[u8Ch-1].u8Cnt)
+    return SW_OK;
+}
+
+WORD32 Q_Empty(uint8 u8Ch)
+{
+
+    if(0 != sg_atQ[u8Ch-1].u8Cnt)
     {
         return SW_ERR;
     }
