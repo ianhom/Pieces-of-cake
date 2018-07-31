@@ -44,6 +44,11 @@ WORD32 Q_init(T_Q *ptQ)
 
 WORD32 Q_Full(uint8 u8Ch)
 {  
+    if((0 == u8Ch)||(u8Ch >= MAX_NUM_Q))
+    {
+        return SW_ERR;
+    }
+    
     if(sg_atQ[u8Ch-1].u8MaxElm == sg_atQ[u8Ch-1].u8Cnt)
     {
         return SW_ERR;
@@ -55,10 +60,32 @@ WORD32 Q_Full(uint8 u8Ch)
 WORD32 Q_Empty(uint8 u8Ch)
 {
 
+    if((0 == u8Ch)||(u8Ch >= MAX_NUM_Q))
+    {
+        return SW_ERR;
+    }
+    
     if(0 != sg_atQ[u8Ch-1].u8Cnt)
     {
         return SW_ERR;
     }
+    
+    return SW_OK;
+}
+
+WORD32 Q_EnQ(uint8 u8Ch, uint8 u8Len, uint8 *pu8Data)
+{
+    if((0 == u8Ch)||(u8Ch >= MAX_NUM_Q))
+    {
+        return SW_ERR;
+    }
+    
+    if((u8Len > sg_atQ[u8Ch-1].u8Len)||(NULL == pu8Data))
+    {
+        return SW_ERR;
+    }
+    
+    .....
     
     return SW_OK;
 }
