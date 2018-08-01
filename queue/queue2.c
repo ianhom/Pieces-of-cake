@@ -75,6 +75,8 @@ WORD32 Q_Empty(uint8 u8Ch)
 
 WORD32 Q_EnQ(uint8 u8Ch, uint8 u8Len, uint8 *pu8Data)
 {
+    T_Q *ptQ;
+    uint8 u8Idx;
     if((0 == u8Ch)||(u8Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
@@ -85,7 +87,12 @@ WORD32 Q_EnQ(uint8 u8Ch, uint8 u8Len, uint8 *pu8Data)
         return SW_ERR;
     }
     
-    .....
+    ptQ = &ag_atQ[u8Ch-1];
+    for(u8Idx = 0; u8Idx < u8Len; u8Idx++)
+    {
+        *(ptQ->pu8Data + (ptQ->u8Tail*ptQ->u8Len) + u8Idx) = *(pu8Data + u8Idx)
+    }
+    ptQ->u8Tail = (ptQ->u8Tail + 1) % ptQ->u8MaxElm;
     
     return SW_OK;
 }
