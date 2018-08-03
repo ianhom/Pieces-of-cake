@@ -125,7 +125,7 @@ WORD32 Q_DeQ(uint8 u8Ch, uint8 u8Len, uint8 *pu8Data)
     
     for(u8Idx = 0; u8Idx < u8Len; u8Idx++)
     {
-        *(pu8Data + u8Idx) = *(ptQ->pu8Data + (ptQ->u8Tail*ptQ->u8Len) + u8Idx);
+        *(pu8Data + u8Idx) = *(ptQ->pu8Data + (ptQ->u8Head*ptQ->u8Len) + u8Idx);
     }
     ptQ->u8Head = (ptQ->u8Head + 1) % ptQ->u8MaxElm;
     ptQ->u8Cnt--;
