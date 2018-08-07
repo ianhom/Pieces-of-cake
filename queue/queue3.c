@@ -42,5 +42,26 @@ WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
     sg_u16Ch++;
     
     returen (ptQ->u16Ch);
+}
+
+WORD32 Q_En(uint16 u16Ch, uint16 u16Len, uint8 *pu8Data)
+{
+    uint16 u16Idx;
+    if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
+    {
+        return SW_ERR;
+    }
     
+    if(NULL == pu8Data)
+    {
+        return SW_ERR;
+    }
+    
+    u16Idx = u16Ch - 1;
+    if((0 == u16Len)||(u16Len > sg_atQ[u16Idx].u16Len))
+    {
+        return SW_ERR;
+    }
+    
+    return SW_OK;
 }
