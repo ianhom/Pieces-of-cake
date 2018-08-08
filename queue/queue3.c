@@ -29,10 +29,10 @@ WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
         reutnr SW_ERR;
     }
     
-    ptQ = &sg_atQ[sg_u16Ch]
-    ptQ->u16Ch = sg_u16Ch;
-    ptQ->u16Head = 0;
-    ptQ->u16Tail = 0;
+    ptQ            = &sg_atQ[sg_u16Ch]
+    ptQ->u16Ch     = sg_u16Ch;
+    ptQ->u16Head   = 0;
+    ptQ->u16Tail   = 0;
     ptQ->u16Cnt    = 0;
     ptQ->u16MaxElm = u16MaxElm;
     ptQ->u16Len    = u16Len;
@@ -47,6 +47,8 @@ WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
 WORD32 Q_En(uint16 u16Ch, uint16 u16Len, uint8 *pu8Data)
 {
     uint16 u16Idx;
+    uint8 *pu8Des;
+    T_Q   *ptQ;
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
@@ -57,11 +59,18 @@ WORD32 Q_En(uint16 u16Ch, uint16 u16Len, uint8 *pu8Data)
         return SW_ERR;
     }
     
-    u16Idx = u16Ch - 1;
-    if((0 == u16Len)||(u16Len > sg_atQ[u16Idx].u16Len))
+    ptQ = sg_atQ[u16Ch - 1];
+    if((0 == u16Len)||(u16Len > ptQ->u16Len))
     {
         return SW_ERR;
     }
+    pu8Des = ptQ->pu8Data + ptQ->u16Tail * ptQ->u16Len;
+    for(u16Idx = 0; u16Idx < u16Len; u16Idx++)
+    {
+        *(pu8Des + u16Idx) = *(pu8Data + u16Idx);
+    }
+    *(ptQ->pu8Len) = u16Len;
+    ptQ->u16Tail = (ptQ->u16Tail + 1) % ptQ->u16MaxElm;
     
     return SW_OK;
 }
