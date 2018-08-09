@@ -71,6 +71,36 @@ WORD32 Q_En(uint16 u16Ch, uint16 u16Len, uint8 *pu8Data)
     }
     *(ptQ->pu8Len) = u16Len;
     ptQ->u16Tail = (ptQ->u16Tail + 1) % ptQ->u16MaxElm;
+    ptQ->u16Cnt++;
+    
+    return SW_OK;
+}
+
+WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
+{
+    uint16 u16Idx;
+    uint8 *pu8Src;
+    T_Q   *ptQ;
+    if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
+    {
+        return SW_ERR;
+    }
+    
+    if((NULL == pu8Data)||(NULL == pu16Len))
+    {
+        return SW_ERR;
+    }
+    
+    ptQ = sg_atQ[u16Ch - 1];
+    *pu16Len = ptQ->u16Len + ptQ->u16Head * siezof(ptQ->u16Len);
+    pu8Src = ptQ->pu8Data + ptQ->u16Head * ptQ->u16Len;
+    for(u16Idx = 0; u16Idx < u16Len; u16Idx++)
+    {
+        *(pu8Data + u16Idx) = *(pu8Src + u16Idx);
+    }
+    
+    ptQ->u16Head = (ptQ->u16Head + 1) % ptQ->u16MaxElm;
+    ptQ->u16Cnt--;
     
     return SW_OK;
 }
