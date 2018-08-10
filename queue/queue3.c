@@ -12,6 +12,10 @@ typedef struct _T_Q
     uint8  *pu8Len;
 }T_Q;
 
+#ifndef MAX_NUM_Q
+#define MAX_NUM_Q        (10)
+#endif
+
 static T_Q sg_atQ[MAX_NUM_Q] = {0}; 
 static uint16 sg_u16Ch = 0;
 WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
