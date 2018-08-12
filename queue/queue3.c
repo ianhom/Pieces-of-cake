@@ -1,8 +1,31 @@
-/* We are going to create a queue module which can save length information */
+/******************************************************************************
+* File       : queue.c
+* Function   : General queue operation with length information    
+* Version    : V1.00
+* Author     : Ian
+* Date       : 13th Aug 2018
+* History    :  No.  When           Who           What
+*               1    13/Aug/2018    Ian           Create
+******************************************************************************/
+#include "queue.h"
+
 
 static T_Q sg_atQ[MAX_NUM_Q] = {0}; 
 static uint16 sg_u16Ch = 0;
 
+/******************************************************************************
+* Name       : WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
+* Function   : Init a new queue, save the key information of queue and return the
+*              channel number if succeed.
+* Input      : uint16 u16MaxElm   1~65535   The maximum of elements in the queue
+*              uint16 u16Len      1~65535   The length of each element in byte
+* Output:    : None
+* Return     : 1~65535   Successful operation & queue channel number.
+*            : SW_ERROR  Failed operation
+* Version    : V1.00
+* Author     : Ian
+* Date       : 13th Aug 2018
+******************************************************************************/
 WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
 {
     uint8 *pu8Data;
