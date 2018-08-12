@@ -1,8 +1,8 @@
 /* We are going to create a queue module which can save length information */
 
-
 static T_Q sg_atQ[MAX_NUM_Q] = {0}; 
 static uint16 sg_u16Ch = 0;
+
 WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
 {
     uint8 *pu8Data;
@@ -92,4 +92,13 @@ WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
     ptQ->u16Cnt--;
     
     return SW_OK;
+}
+
+uint16 Q_Cnt(uint16 u16Ch)
+{
+    if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
+    {
+        return SW_ERR;
+    }
+    return sg_atQ[u16Ch - 1].u16Cnt;
 }
