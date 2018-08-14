@@ -56,6 +56,19 @@ WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
     returen (ptQ->u16Ch);
 }
 
+/******************************************************************************
+* Name       : WORD32 Q_En(uint16 u16Ch, uint16 u16Len, uint8 *pu8Data)
+* Function   : Enqueue operation
+* Input      : uint16 u16Ch       1~65535   The channel number of queue
+*              uint16 u16Len      1~65535   The length of each element in byte
+*              uint8 *pu8Data               The data pointer to be saved
+* Output:    : None
+* Return     : SW_OK     Successful operation
+*            : SW_ERROR  Failed operation
+* Version    : V1.00
+* Author     : Ian
+* Date       : 13th Aug 2018
+******************************************************************************/
 WORD32 Q_En(uint16 u16Ch, uint16 u16Len, uint8 *pu8Data)
 {
     uint16 u16Idx;
@@ -88,6 +101,18 @@ WORD32 Q_En(uint16 u16Ch, uint16 u16Len, uint8 *pu8Data)
     return SW_OK;
 }
 
+/******************************************************************************
+* Name       : WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
+* Function   : Dequeue operation
+* Input      : uint16 u16Ch       1~65535   The channel number of queue
+*              uint16 u16Len      1~65535   The length of each element in byte
+* Output:    : uint8 *pu8Data               The data pointer to be loaded
+* Return     : SW_OK     Successful operation
+*            : SW_ERROR  Failed operation
+* Version    : V1.00
+* Author     : Ian
+* Date       : 13th Aug 2018
+******************************************************************************/
 WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
 {
     uint16 u16Idx;
@@ -117,6 +142,17 @@ WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
     return SW_OK;
 }
 
+/******************************************************************************
+* Name       : uint16 Q_Cnt(uint16 u16Ch)
+* Function   : Return the count of current element of queue.
+* Input      : uint16 u16Ch       1~65535   The channel number of queue
+* Output:    : None
+* Return     : 1~65535   Successful operation & the count of the element
+*            : SW_ERROR  Failed operation or NONE element
+* Version    : V1.00
+* Author     : Ian
+* Date       : 13th Aug 2018
+******************************************************************************/
 uint16 Q_Cnt(uint16 u16Ch)
 {
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
