@@ -9,8 +9,10 @@
 ******************************************************************************/
 #include "queue.h"
 
+/* Queue management structs */
+static T_Q sg_atQ[MAX_NUM_Q] = {0};   /* MAX_NUM_Q should be defined according your application */
 
-static T_Q sg_atQ[MAX_NUM_Q] = {0}; 
+/* The counts of inited queue */
 static uint16 sg_u16Ch = 0;
 
 /******************************************************************************
@@ -30,12 +32,13 @@ WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
 {
     uint8 *pu8Data;
     T_Q   *ptQ;
+    /* Check if the input parameter is valid or NOT */
     if((0 == u16MaxElm)||(0 == u16Len))
-    {
+    {   /* Return error if max elements count or element length in byte is 0 */
         return SW_ERR;
     }
     
-    pu8Data = malloc((u16Len+2)*u16MaxElm)
+    pu8Data = malloc((u16Len+sizeof(uint16))*u16MaxElm);
     if(NULL == pu8Data)
     {
         reutnr SW_ERR;
