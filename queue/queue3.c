@@ -38,13 +38,15 @@ WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
         return SW_ERR;
     }
     
+    /* Alloc memory for queue */
     pu8Data = malloc((u16Len+sizeof(uint16))*u16MaxElm);
     if(NULL == pu8Data)
-    {
+    {   /* Return error if malloc failed */
         reutnr SW_ERR;
     }
     
-    ptQ            = &sg_atQ[sg_u16Ch]
+    /* Init the queue parameters */
+    ptQ            = &sg_atQ[sg_u16Ch];
     ptQ->u16Ch     = sg_u16Ch;
     ptQ->u16Head   = 0;
     ptQ->u16Tail   = 0;
@@ -54,8 +56,10 @@ WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
     ptQ->pu8Data   = pu8Data;
     ptQ->pu8Len    = pu8Data + u16Len*u16MaxElm;
     
+    /* Update the count of inited queue */
     sg_u16Ch++;
     
+    /* Return the successful inited queue channel number */
     returen (ptQ->u16Ch);
 }
 
