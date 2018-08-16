@@ -39,7 +39,7 @@ WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
     }
     
     /* Alloc memory for queue */
-    pu8Data = malloc((u16Len+sizeof(uint16))*u16MaxElm);
+    pu8Data = malloc((u16Len+sizeof(uint16))*u16MaxElm); /* Data and length */
     if(NULL == pu8Data)
     {   /* Return error if malloc failed */
         reutnr SW_ERR;
@@ -53,8 +53,8 @@ WORD16 Q_Init(uint16 u16MaxElm, uint16 u16Len)
     ptQ->u16Cnt    = 0;
     ptQ->u16MaxElm = u16MaxElm;
     ptQ->u16Len    = u16Len;
-    ptQ->pu8Data   = pu8Data;
-    ptQ->pu8Len    = pu8Data + u16Len*u16MaxElm;
+    ptQ->pu8Data   = pu8Data;                     /* Data position   */
+    ptQ->pu8Len    = pu8Data + u16Len*u16MaxElm;  /* Length position */
     
     /* Update the count of inited queue */
     sg_u16Ch++;
@@ -81,6 +81,8 @@ WORD32 Q_En(uint16 u16Ch, uint16 u16Len, uint8 *pu8Data)
     uint16 u16Idx;
     uint8 *pu8Des;
     T_Q   *ptQ;
+    
+    /*  */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
@@ -167,4 +169,18 @@ uint16 Q_Cnt(uint16 u16Ch)
         return SW_ERR;
     }
     return sg_atQ[u16Ch - 1].u16Cnt;
+}
+
+uint16 Q_Empty(uint16 u16Ch)
+{
+    if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
+    {
+        return SW_ERR;
+    }
+    
+    if(0 == sg_atQ[u16Ch - 1].u16Cnt)
+    {
+        return Q_EMPTY;
+    }
+    return Q_NOT_EMPTY;
 }
