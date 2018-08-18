@@ -171,7 +171,7 @@ uint16 Q_Cnt(uint16 u16Ch)
     return sg_atQ[u16Ch - 1].u16Cnt;
 }
 
-uint16 Q_Empty(uint16 u16Ch)
+uint32 Q_Empty(uint16 u16Ch)
 {
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
@@ -183,4 +183,18 @@ uint16 Q_Empty(uint16 u16Ch)
         return Q_EMPTY;
     }
     return Q_NOT_EMPTY;
+}
+
+uint32 Q_Full(uint16 u16Ch)
+{
+    if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
+    {
+        return SW_ERR;
+    }
+    
+    if(sg_atQ[u16Ch - 1].u16MaxElm == sg_atQ[u16Ch - 1].u16Cnt)
+    {
+        return Q_FULL;
+    }
+    return Q_NOT_FULL;
 }
