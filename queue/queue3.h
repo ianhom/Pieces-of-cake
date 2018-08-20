@@ -80,3 +80,31 @@ WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data);
 * Date       : 13th Aug 2018
 ******************************************************************************/
 uint16 Q_Cnt(uint16 u16Ch);
+
+/******************************************************************************
+* Name       : uint32 Q_Empty(uint16 u16Ch)
+* Function   : Check if the queue is empty
+* Input      : uint16 u16Ch       1~65535   The channel number of queue
+* Output:    : None
+* Return     : Q_EMPTY      Queue is empty
+*              Q_NOT_EMPTY  Queue is NOT empty
+*            : SW_ERROR     Failed operation
+* Version    : V1.00
+* Author     : Ian
+* Date       : 13th Aug 2018
+******************************************************************************/
+uint32 Q_Empty(uint16 u16Ch);
+
+/******************************************************************************
+* Name       : uint32 Q_Full(uint16 u16Ch)
+* Function   : Check if the queue is full
+* Input      : uint16 u16Ch       1~65535   The channel number of queue
+* Output:    : None
+* Return     : Q_FULL       Queue is full
+*              Q_NOT_FULL   Queue is NOT full
+*            : SW_ERROR     Failed operation
+* Version    : V1.00
+* Author     : Ian
+* Date       : 13th Aug 2018
+******************************************************************************/
+uint32 Q_Full(uint16 u16Ch);
