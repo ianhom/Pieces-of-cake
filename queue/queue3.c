@@ -82,29 +82,39 @@ WORD32 Q_En(uint16 u16Ch, uint16 u16Len, uint8 *pu8Data)
     uint8 *pu8Des;
     T_Q   *ptQ;
     
-    /*  */
+    /* Check if the channel number is valid or NOT */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
     }
     
+    /* Check if the data pointer to be input is valid or NOT */
     if(NULL == pu8Data)
     {
         return SW_ERR;
     }
     
     ptQ = sg_atQ[u16Ch - 1];
+    /* Check if the input length is valid or NOT */
     if((0 == u16Len)||(u16Len > ptQ->u16Len))
     {
         return SW_ERR;
     }
+    
+    /* Calculate the destination position in the queue */
     pu8Des = ptQ->pu8Data + ptQ->u16Tail * ptQ->u16Len;
     for(u16Idx = 0; u16Idx < u16Len; u16Idx++)
-    {
+    {   /* Input the data into the queue */
         *(pu8Des + u16Idx) = *(pu8Data + u16Idx);
     }
+    
+    /* Save the length information */
     *(ptQ->pu8Len) = u16Len;
+    
+    /* Update the tail position */
     ptQ->u16Tail = (ptQ->u16Tail + 1) % ptQ->u16MaxElm;
+    
+    /* Update the elements count of the queue */
     ptQ->u16Cnt++;
     
     return SW_OK;
@@ -127,11 +137,13 @@ WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
     uint16 u16Idx;
     uint8 *pu8Src;
     T_Q   *ptQ;
+    
+    /* Check if the input parameter is valid or NOT */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
     }
-    
+    /* Check if the input parameter is valid or NOT */
     if((NULL == pu8Data)||(NULL == pu16Len))
     {
         return SW_ERR;
@@ -153,7 +165,7 @@ WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
 
 /******************************************************************************
 * Name       : uint16 Q_Cnt(uint16 u16Ch)
-* Function   : Return the count of current element of queue.
+* Function   : Return the count of current elements of queue.
 * Input      : uint16 u16Ch       1~65535   The channel number of queue
 * Output:    : None
 * Return     : 1~65535   Successful operation & the count of the element
@@ -164,6 +176,7 @@ WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
 ******************************************************************************/
 uint16 Q_Cnt(uint16 u16Ch)
 {
+    /* Check if the input parameter is valid or NOT */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
@@ -185,6 +198,7 @@ uint16 Q_Cnt(uint16 u16Ch)
 ******************************************************************************/
 uint32 Q_Empty(uint16 u16Ch)
 {
+    /* Check if the input parameter is valid or NOT */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
@@ -211,6 +225,7 @@ uint32 Q_Empty(uint16 u16Ch)
 ******************************************************************************/
 uint32 Q_Full(uint16 u16Ch)
 {
+    /* Check if the input parameter is valid or NOT */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
