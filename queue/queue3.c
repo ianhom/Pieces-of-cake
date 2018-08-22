@@ -138,26 +138,33 @@ WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
     uint8 *pu8Src;
     T_Q   *ptQ;
     
-    /* Check if the input parameter is valid or NOT */
+    /* Check if the channel number is valid or NOT */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
     }
-    /* Check if the input parameter is valid or NOT */
+    /* Check if the output data pointer or length pointer is valid or NOT */
     if((NULL == pu8Data)||(NULL == pu16Len))
     {
         return SW_ERR;
     }
     
     ptQ = sg_atQ[u16Ch - 1];
+    
+    /* Restore the length information */
     *pu16Len = ptQ->u16Len + ptQ->u16Head * siezof(ptQ->u16Len);
+    
+    /* Calculate the source position in the queue */
     pu8Src = ptQ->pu8Data + ptQ->u16Head * ptQ->u16Len;
     for(u16Idx = 0; u16Idx < u16Len; u16Idx++)
-    {
+    {   /* Output the date from the queue */
         *(pu8Data + u16Idx) = *(pu8Src + u16Idx);
     }
     
+    /* Update the Head position */
     ptQ->u16Head = (ptQ->u16Head + 1) % ptQ->u16MaxElm;
+    
+    /* Update the count of elements in the queue */
     ptQ->u16Cnt--;
     
     return SW_OK;
