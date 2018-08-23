@@ -183,11 +183,13 @@ WORD32 Q_De(uint16 u16Ch, uint16 *pu16Len, uint8 *pu8Data)
 ******************************************************************************/
 uint16 Q_Cnt(uint16 u16Ch)
 {
-    /* Check if the input parameter is valid or NOT */
+    /* Check if the channel number is valid or NOT */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
     }
+    
+    /* Return the current count of elements */
     return sg_atQ[u16Ch - 1].u16Cnt;
 }
 
@@ -205,16 +207,17 @@ uint16 Q_Cnt(uint16 u16Ch)
 ******************************************************************************/
 uint32 Q_Empty(uint16 u16Ch)
 {
-    /* Check if the input parameter is valid or NOT */
+    /* Check if the channel number is valid or NOT */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
     }
     
     if(0 == sg_atQ[u16Ch - 1].u16Cnt)
-    {
+    {   /* If the current count of elements is 0, return EMPTY */
         return Q_EMPTY;
     }
+    /* Else return NOT EMPTY */
     return Q_NOT_EMPTY;
 }
 
@@ -232,16 +235,17 @@ uint32 Q_Empty(uint16 u16Ch)
 ******************************************************************************/
 uint32 Q_Full(uint16 u16Ch)
 {
-    /* Check if the input parameter is valid or NOT */
+    /* Check if the channel number is valid or NOT */
     if((0 == u16Ch)||(u16Ch >= MAX_NUM_Q))
     {
         return SW_ERR;
     }
     
     if(sg_atQ[u16Ch - 1].u16MaxElm <= sg_atQ[u16Ch - 1].u16Cnt)
-    {
+    {   /* If the current count of elements is NOT less than the maximum, return FULL */
         return Q_FULL;
     }
+    /* Else return NOT FULL */
     return Q_NOT_FULL;
 }
 
