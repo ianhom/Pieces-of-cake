@@ -14,17 +14,26 @@ typedef struct _T_Q
 
 #define MAX_NUM_Q      (2)  /* Define it in application               */  
 
+static uint16 sg_u16Cnt = 0;
 static T_Q sg_atQ[MAX_NUM_Q] = {0}; 
 
 uint32 Q_Init(uint16 u16MaxElm)
 {
-      
+    T_Q *ptQ;    
   
     if(0 == u16MaxElm)
     {
         return SW_ERROR;
     }
-  
+    
+    ptQ = (T_Q*)malloc(sizeof(uint8**)*u16MaxElm)
+    if(NULL == ptQ)
+    {
+        PRINTF("No more memory!\r\n");
+        return SW_ERROR
+    }
+    
+    
     
     return SW_OK;
 }
