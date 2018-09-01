@@ -8,10 +8,25 @@ int UpdatData(unsigned char *arr)
         {
             if(0 != arr[m])
             {
-                break;
                 next = m;
+                break;
             }
         }
-
+        
+        if(-1 != next)
+        {
+            if(0 == arr[i])
+            {
+                arr[i] = arr[next];
+                arr[next] = 0;
+                i = i - 1;
+            }
+            else if(arr[i] == arr[next])
+            {
+                arr[i] = arr[i]*2;
+                arr[next] = 0;
+            }
+        }
     }
+    return 0;
 }
