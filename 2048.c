@@ -8,7 +8,7 @@ int UpdatData(unsigned char *arr)
         for(m = i+1; m < 4; m++)
         {
             if(0 != arr[m])
-            {
+            {   /* We find it */
                 next = m;
                 break;
             }
@@ -18,14 +18,14 @@ int UpdatData(unsigned char *arr)
         if(-1 != next)
         {   /* If the current one is 0 */
             if(0 == arr[i])
-            {   /* Switch the number with next */
+            {   /* Switch the number with next one */
                 arr[i] = arr[next];
                 arr[next] = 0;
                 i = i - 1;
             }
             /* If the current one and next one are the same */
             else if(arr[i] == arr[next])
-            {
+            {   /* Meger the two number and clear the next one */
                 arr[i] = arr[i]*2;
                 arr[next] = 0;
             }
