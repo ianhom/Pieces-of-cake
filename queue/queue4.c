@@ -63,3 +63,34 @@ uint32 Q_Init(uint16 u16MaxElm)
     
     return SW_OK;
 }
+
+uint32 Q_In(uint16 u16Ch)
+{
+    T_Q *ptQ;  
+    uint8 **ppu8Data;
+    uint16 *pu16Len;
+    
+    if((0 == u16Ch)||(u16Ch > MAX_NUM_Q))
+    {
+        PRINTF("Wrong channel number!\r\n");
+        return SW_ERROR;
+    }
+    
+    return SW_OK;
+}
+
+uint32 Q_Out(uint16 u16Ch)
+{
+    T_Q *ptQ;  
+    uint8 **ppu8Data;
+    uint16 *pu16Len;
+    
+    if((0 == u16Ch)||(u16Ch > MAX_NUM_Q))
+    {
+        PRINTF("Wrong channel number!\r\n");
+        return SW_ERROR;
+    }
+    
+    return SW_OK;
+}
+  
