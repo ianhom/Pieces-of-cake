@@ -9,4 +9,4 @@ int my_strlen(char *s)
     return len;
 }
 
-#define MY_STRLEN(s) (int len;for(len=0;s[len]!='\0';len++);len;) 
+#define MY_STRLEN(s,l) (for(l=0;s[l]!='\0';l++);) 
