@@ -9,4 +9,4 @@ int my_strlen(char *s)
     return len;
 }
 
-#define MY_STRLEN(s,l) (if(NULL!=s)for(l=0;s[l]!='\0';l++);else l=0;) 
+#define MY_STRLEN(s,l) do{if(NULL!=s)for(l=0;s[l]!='\0';l++);else l=0;}while(0)
