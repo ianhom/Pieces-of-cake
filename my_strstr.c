@@ -1,12 +1,11 @@
-char* my_strstr(char *pcstr1, char *pcstr2, unsigned int u32Len)
+char* my_strstr(char *pcstr1, char *pcstr2)
 {
     unsigned int  u32Index = 0;
     char         *pRet = NULL;
     
-    /* If the length is 0 which means use lib strstr */
-    if(0 == u32Len)
+    if((NULL == pcstr1)||(NULL == pcstr2))
     {
-        return strstr(pcstr1,pcstr2);
+        return NULL;
     }
     else
     {
