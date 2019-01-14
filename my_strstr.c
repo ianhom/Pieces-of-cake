@@ -1,15 +1,13 @@
 char* my_strstr(char *pcstr1, char *pcstr2)
-{
-    unsigned int  u32Index = 0;
-    char         *pRet = NULL;
-    
-    if((NULL == pcstr1)||(NULL == pcstr2))
+{  
+    int len,i;
+    for(len = 0; str1[len]!='\0';len++);
+    for(i = 0; i < len; i++)
     {
-        return NULL;
+        if(str1[i] != str2[i])
+        {
+            return NULL;
+        }
     }
-    else
-    {
-        /* To be done */
-    }
-    return pRet;
+    return str1;
 }
