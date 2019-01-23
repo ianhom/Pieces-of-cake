@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MY_STRLEN(s,l) do{if(NULL!=s)for(l=0;s[l]!='\0';l++);else l=0;}while(0)
+#define MY_STRLEN(s,l) do{l=0;if(NULL!=s)for(;s[l]!='\0';l++);}while(0)
 
 int my_strlen(char *s)
 {
