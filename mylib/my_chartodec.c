@@ -5,4 +5,8 @@
 int my_chartodec(char *s)
 {
     int ret=0;
-    retur
+    int l,f;
+    
+    return ret;
+
+}
