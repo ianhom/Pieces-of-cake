@@ -1,5 +1,9 @@
-#ifndef MY_LIB
-#ifdef MY_LIB
+#ifndef __MY_LIB
+#ifdef __MY_LIB
+
+//MARCO
+#define _STR(x)      #x
+#define STR(x)       _STR(X)
 
 int my_strlen(char *a);
 char* my_strcpy(char *des, char *src);
