@@ -2,8 +2,13 @@
 #ifdef __MY_LIB
 
 //MARCO
-#define _STR(x)      #x
-#define STR(x)       _STR(X)
+#define _STR(x)          #x
+#define STR(x)           _STR(X)
+
+
+#define PRTN             do{printf("\n");}while(0)
+#define _PRTNN(repeat)   do{repeat PRTN;}while(0)      
+#define PRTNN(num)       _PRTNN(REPEAT(num))
 
 int my_strlen(char *a);
 char* my_strcpy(char *des, char *src);
