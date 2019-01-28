@@ -1,9 +1,11 @@
 #ifndef __MY_LIB
-#ifdef __MY_LIB
+#define __MY_LIB
 
 // MARCO
 #define _STR(x)          #x
-#define STR(x)           _STR(X)
+#define STR(x)           _STR(x)
+
+#define EFOR0(_idx,n)    for(int _idx=0;_idx<n;_idx++)
 
 #define PRTN             do{printf("\n");}while(0)
 #define _PRTNN(repeat)   do{repeat PRTN;}while(0)      
@@ -12,9 +14,9 @@
 #define _PRT_STR(s)      do{printf("%s\n",s);}while(0)
 #define PRT_STR(s)       PRT_STR(s)
 
-#define __PTR_ARY(a,n,type)  do{REPEAT(n){printf("%"type",")}PRTN;}while(0)
-#define _PTR_ARY(a,n,type)   __PRT_ARY(a,n,STR(type))
-#define PRT_ARY(a,n,type)    _PRT_ARY((a),(n),(type))
+#define __PRT_ARY(a,n,type)  do{EFOR0(_idx,n){printf("%"type",",a[_idx]);}PRTN;}while(0)
+#define _PRT_ARY(a,n,type)   __PRT_ARY(a,n,STR(type))
+#define PRT_ARY(a,n,type)    _PRT_ARY((a),(n),type)
 
 // Declarations
 int my_strlen(char *a);
