@@ -5,7 +5,6 @@
 #define _STR(x)          #x
 #define STR(x)           _STR(X)
 
-
 #define PRTN             do{printf("\n");}while(0)
 #define _PRTNN(repeat)   do{repeat PRTN;}while(0)      
 #define PRTNN(num)       _PRTNN(REPEAT(num))
@@ -13,6 +12,9 @@
 #define _PRT_STR(s)      do{printf("%s\n",s);}while(0)
 #define PRT_STR(s)       PRT_STR(s)
 
+#define __PTR_ARY(a,n,type)  do{REPEAT(n){printf("%"type",")}PRTN;}while(0)
+#define _PTR_ARY(a,n,type)   __PRT_ARY(a,n,STR(type))
+#define PRT_ARY(a,n,type)    _PRT_ARY((a),(n),(type))
 
 // Declarations
 int my_strlen(char *a);
