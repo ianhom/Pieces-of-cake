@@ -18,6 +18,9 @@
 #define _PRT_ARY(a,n,type)   __PRT_ARY(a,n,STR(type))
 #define PRT_ARY(a,n,type)    _PRT_ARY((a),(n),type)
 
+#define _MY_SWAP_INT(a,b)   do{int _Temp_=a;a=b;b=_Temp_;}while(0)
+#define MY_SWAP_INT(a,b)    _MY_SWAP_INT((a),(b))
+
 // Declarations
 int my_strlen(char *a);
 char* my_strcpy(char *des, char *src);
