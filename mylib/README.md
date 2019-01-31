@@ -3,3 +3,4 @@
 - my_strlen
 - my_strcpy
 - my_strstr
+- my_atoi
