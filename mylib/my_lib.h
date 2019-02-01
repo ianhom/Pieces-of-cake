@@ -5,9 +5,13 @@
 #define _STR(x)          #x
 #define STR(x)           _STR(x)
 
-#define EFOR0(_idx,n)      for(int _idx=0;_idx<n;_idx++)
-#define EFOR1(_idx,n)      for(int _idx=1;_idx<=n;_idx++)
-#define EFORN(_idx,a,n)    for(int _idx=a;_idx<n+a;_idx++)
+#define _EFOR0(_idx,n)      for(int _idx=0;_idx<n;_idx++)
+#define _EFOR1(_idx,n)      for(int _idx=1;_idx<=n;_idx++)
+#define _EFORN(_idx,a,n)    for(int _idx=a;_idx<n+a;_idx++)
+
+#define EFOR0(_idx,n)       _EFOR0((_idx),(n))
+#define EFOR1(_idx,n)       _EFOR1((_idx),(n))
+#define EFORN(_idx,a,n)     _EFOR0((_idx),(a),(n)) 
 
 #define PRTN             do{printf("\n");}while(0)
 #define _PRTNN(repeat)   do{repeat PRTN;}while(0)      
