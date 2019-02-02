@@ -11,7 +11,7 @@
 
 #define EFOR0(_idx,n)       _EFOR0((_idx),(n))
 #define EFOR1(_idx,n)       _EFOR1((_idx),(n))
-#define EFORN(_idx,a,n)     _EFOR0((_idx),(a),(n)) 
+#define EFORN(_idx,a,n)     _EFORN((_idx),(a),(n)) 
 
 #define PRTN             do{printf("\n");}while(0)
 #define _PRTNN(repeat)   do{repeat PRTN;}while(0)      
