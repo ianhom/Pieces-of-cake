@@ -30,6 +30,8 @@
 #define _MY_STRLEN(s,l)       do{l=0;if(0!=s)for(;s[l]!='\0';l++);}while(0)
 #define MY_STRLEN(s,l)        _MY_STRLEN((s),(l))
 
+#define MY_STRCPY(DES,SRC)   do{char *des=DES,*src=SRC;if((NULL!=des)&&(NULL!=src))while((*des++=*src++)!='\0');}while(0)
+
 // Declarations
 int my_strlen(char *a);
 char* my_strcpy(char *des, char *src);
