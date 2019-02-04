@@ -28,7 +28,7 @@
 #define MY_SWAP_INT(a,b)      _MY_SWAP_INT((a),(b))
 
 #define _MY_STRLEN(s,l)       do{l=0;if(0!=s)for(;s[l]!='\0';l++);}while(0)
-
+#define MY_STRLEN(s,l)        _MY_STRLEN((s),(l))
 
 // Declarations
 int my_strlen(char *a);
