@@ -34,6 +34,10 @@
 
 #define _MY_STRCPY(DES,SRC)   do{char *des=DES,*src=SRC;if((NULL!=des)&&(NULL!=src))while((*des++=*src++)!='\0');}while(0)
 #define MY_STRCPY(DES,SRC)    _MY_STRCPY((DES),(SRC))
+
+#define _MY_STRCPY(DES,SRC)   do{int _idx_=0;,if((NULL!=DES)&&(NULL!=SRC)for(;(DES[_idx_]=SRC[_idx_])!='\0';_idx_++);}while(0)
+#define MY_STRCPY(DES,SRC)    _MY_STRCPY((DES),(SRC))
+
 // Declarations    
 int my_strlen(char *a);
 char* my_strcpy(char *des, char *src);
