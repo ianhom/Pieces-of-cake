@@ -20,7 +20,7 @@
 #define PRTNN(num)            _PRTNN(REPEAT(num))
 
 #define _PRT_STR(s)           do{printf("%s\n",s);}while(0)
-#define PRT_STR(s)            PRT_STR(s)
+#define PRT_STR(s)            _PRT_STR(s)
 
 #define __PRT_ARY(a,n,type)   do{EFOR0(_idx,n){printf("%"type",",a[_idx]);}PRTN;}while(0)
 #define _PRT_ARY(a,n,type)    __PRT_ARY(a,n,STR(type))
@@ -33,9 +33,6 @@
 #define MY_STRLEN(s,l)        _MY_STRLEN((s),(l))
 
 #define _MY_STRCPY(DES,SRC)   do{char *des=DES,*src=SRC;if((NULL!=des)&&(NULL!=src))while((*des++=*src++)!='\0');}while(0)
-#define MY_STRCPY(DES,SRC)    _MY_STRCPY((DES),(SRC))
-
-#define _MY_STRCPY(DES,SRC)   do{int _idx_=0;,if((NULL!=DES)&&(NULL!=SRC)for(;(DES[_idx_]=SRC[_idx_])!='\0';_idx_++);}while(0)
 #define MY_STRCPY(DES,SRC)    _MY_STRCPY((DES),(SRC))
 
 // Declarations    
