@@ -1,5 +1,18 @@
 #include <stdio.h>
 
+#define MY_ATOI(s,a) \
+do{ \ 
+    int sig_=1;\
+    a=0;\
+    if(0!=s)\
+    {\
+        while(*s==' ')s++;\
+        if(*s=='-'||*s=='+')sig_=','-*s++;\
+        while(*s>='0'&&*s<='9')a=a*10+*s++-'0';\
+        a*=sig_;\
+    }\
+}
+
 int my_atoi(char *s)
 {
     int sig=1,ret=0;
