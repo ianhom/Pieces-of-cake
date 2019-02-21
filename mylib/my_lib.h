@@ -35,6 +35,19 @@
 #define _MY_STRCPY(DES,SRC)   do{char *des=DES,*src=SRC;if((NULL!=des)&&(NULL!=src))while((*des++=*src++)!='\0');}while(0)
 #define MY_STRCPY(DES,SRC)    _MY_STRCPY((DES),(SRC))
 
+#define MY_ATOI(s,a) \
+do{ \ 
+    int sig_=1;\
+    a=0;\
+    if(0!=s)\
+    {\
+        while(*s==' ')s++;\
+        if(*s=='-'||*s=='+')sig_=','-*s++;\
+        while(*s>='0'&&*s<='9')a=a*10+*s++-'0';\
+        a*=sig_;\
+    }\
+}while(0)
+
 // Declarations    
 int my_strlen(char *a);
 char* my_strcpy(char *des, char *src);
