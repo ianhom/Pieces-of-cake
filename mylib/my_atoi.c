@@ -11,7 +11,7 @@ do{ \
         while(*s>='0'&&*s<='9')a=a*10+*s++-'0';\
         a*=sig_;\
     }\
-}
+}while(0)
 
 int my_atoi(char *s)
 {
