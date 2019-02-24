@@ -22,3 +22,14 @@ int my_atoi(char *s)
     while(*s>='0'&&*s<='9')ret=ret*10+*s++-'0'; // converting
     return sig*ret;
 }
+
+void main(int argc, char **argv)
+{
+    int a[101];
+    for(int i=1;i<argc;i++)
+    {
+        a[i]=atoi(argv[i]);
+        printf("%d,"a[i]);
+    }
+    printf("\n");
+}
