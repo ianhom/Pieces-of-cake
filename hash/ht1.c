@@ -11,17 +11,26 @@ typedef strtuct _T
     int         data;
 }N;
 
+typedef struct _TT
+{
+    N *head;
+    N *tail;
+}NN;
+
 static int htl = 0;
-static N **ppT = NULL;
+static NN *pT = NULL;
 
 int ht_init(int l)
 {
     if(!l)return 0;
-    ppT=(N**)malloc(l*sizeof(N*));
-    inf(!ppT)return 0;
+    pT=(NN*)malloc(l*sizeof(NN));
+    inf(!pT)return 0;
     htl=l;
     for(int i=0;i<l;i++)
-        ppT[i]=NULL;
+    {
+        pT[i].head=NULL;
+        pt[i].tail=NULL;
+    }
     return 1;
 }
 
@@ -38,16 +47,12 @@ N* ht_add(int data)
     ptNode->data=data;
     ptNode->ptNext=NULL;
     int d = hash(data);
-    ptTemp=ppT[d];
+    ptTemp=pT[d].head;
     if(!ptTemp)
-        ppT[d]=ptNode;
+        pT[d].head=ptNode;
     else
-    {
-        while(ptTemp->ptNext)
-            ptTemp=ptTemp->ptNext;
-        ptTemp->ptNext=ptNode;
-    }
-    return ptNode;
+        pt[d].tail->ptNext=ptNode;
+    return pT[d].tail=ptNode;
 }
 
 void prt_ht(void)
@@ -55,7 +60,7 @@ void prt_ht(void)
     N *ptTemp;
     for(int i=0;i<htl;i++)
     {
-        ptTemp=ppT[i];
+        ptTemp=pT[i].head;
         printf("Group %4d: ",htl);
         while(ptTemp)
         {
