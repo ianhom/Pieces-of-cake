@@ -24,13 +24,10 @@ int ht_init(int l)
 {
     if(!l)return 0;
     pT=(NN*)malloc(l*sizeof(NN));
-    inf(!pT)return 0;
+    if(!pT)return 0;
     htl=l;
     for(int i=0;i<l;i++)
-    {
-        pT[i].head=NULL;
-        pt[i].tail=NULL;
-    }
+        pT[i].head=pt[i].tail=NULL;
     return 1;
 }
 
