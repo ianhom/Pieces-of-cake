@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 #define MAX  100
-
+static int sg_cnt=0;
+static int head=0;
+static int tail=0;
 typedef struct _L
 {
     int data;
@@ -13,6 +15,7 @@ Node a[MAX]={0};
 
 void init(void)
 {
+    sg_cnt=0;
     for(int i=0;i<MAX;i++)
     {
         a[i].data=0;
@@ -20,3 +23,5 @@ void init(void)
         a[i].prev=0;
     }
 }
+
+
