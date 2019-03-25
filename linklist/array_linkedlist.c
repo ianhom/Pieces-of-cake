@@ -24,4 +24,13 @@ void init(void)
     }
 }
 
+int add(int data)
+{
+    if(sg_cnt<MAX)
+    {
+        a[sg_cnt].data=data;
+    }
+}
+    
+
 
