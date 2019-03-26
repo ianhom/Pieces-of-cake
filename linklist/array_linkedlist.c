@@ -29,6 +29,8 @@ int add(int data)
     if(sg_cnt<MAX)
     {
         a[sg_cnt].data=data;
+        s[sg_cnt].prex=sg_cnt-1;
+        a[sg_cnt].next=sg_cnt+1;
     }
 }
     
