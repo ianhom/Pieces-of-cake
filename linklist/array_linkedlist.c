@@ -2,6 +2,7 @@
 
 #define MAX  100
 static int sg_cnt=1;  //start with 1,and the first(0) node will Not used
+static int index=1；
 static int head=0;
 static int tail=0;
 typedef struct _L
