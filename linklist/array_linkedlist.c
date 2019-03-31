@@ -30,8 +30,8 @@ int add(int data)
     if(sg_cnt<MAX)
     {
         a[index].data=data;
-        s[index].prex=sg_cnt-1;
-        a[index].next=sg_cnt+1;
+        s[index].prex=index-1;
+        a[index].next=index+1;
         index++;
         sg_cnt++;
     }
