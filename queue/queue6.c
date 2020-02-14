@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 typedef struct _q{int h,t,c,s,*d[0];}Q;
-#define INIT(q,n)     do{if(q=(Q*)malloc(sizeof(Q)+sizeof(int*)*n)){q->h=q->t=q->c=0;q->s=n;}}while(0)
-#define IN(q,n,err)   do{if(q->c!=q->s){q->d[q->t]=(int*)n;q->t=(++q->t)%q->s;q->c++;}else err;}while(0)
-#define OUT(q,n,err)  do{if(q->c!=0){n=q->d[q->h];q->h=(++q->h)%q->s;q->c--;}else err;}while(0)
+#define INIT(q,n,err)     do{if(q=(Q*)malloc(sizeof(Q)+sizeof(int*)*n)){q->h=q->t=q->c=0;q->s=n;}else{err;}}while(0)
+#define IN(q,n,err)       do{if(q->c!=q->s){q->d[q->t]=(int*)n;q->t=(++q->t)%q->s;q->c++;}else{err;}}while(0)
+#define OUT(q,n,err)      do{if(q->c!=0){n=q->d[q->h];q->h=(++q->h)%q->s;q->c--;}else{err;}}while(0)
 
 // Example
 void main(int argc, char **argv)
@@ -15,8 +15,8 @@ void main(int argc, char **argv)
     Q *q;
     
     while(*s>='0'&&*s<='9')max=max*10+*s++-'0';
-    INIT(q,max);
-    for(i=0;i<max+1;i++) IN(q,a[i],printf("Queue is full\n"));
+    INIT(q,max,printf("Queue is full\n"););
+    for(i=0;i<max+1;i++) IN(q,a[i],printf("Queue is full\n"););
     for(i=0;i<max+1;i++)
     {
         OUT(q,temp,temp=NULL);
