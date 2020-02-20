@@ -15,5 +15,7 @@ void main()
     int a = 10;
     test2();            /* Call test2 fisrt */
     a = test1();        /* Then call test1  */
-    printf("%d\n",a);   /* "a" may be 5 */
+    printf("%d\n",a);   /* "a" is 5 */
+    a = test1();
+    printf("%d\n",a);   /* "a" is 2 */
 }
