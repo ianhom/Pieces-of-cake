@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #define MY_ATOI(s) \
-({ \ 
+({ \
     int _sig=1,_max=0;\
     if(0!=s)\
     {\
@@ -27,7 +27,8 @@ void main(int argc, char **argv)
     int a[101];
     for(int i=1;i<argc;i++)
     {
-        a[i]=atoi(argv[i]);
+        a[i]=my_atoi(argv[i]);
+        //a[i]=MY_ATOI(argv[i]);
         printf("%d",a[i]);
     }
     printf("\n");
