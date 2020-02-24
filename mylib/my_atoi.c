@@ -1,17 +1,16 @@
 #include <stdio.h>
 
-#define MY_ATOI(s,a) \
-do{ \ 
-    int sig_=1;\
-    a=0;\
+#define MY_ATOI(s) \
+({ \ 
+    int _sig=1,_max=0;\
     if(0!=s)\
     {\
         while(*s==' ')s++;\
-        if(*s=='-'||*s=='+')sig_=','-*s++;\
-        while(*s>='0'&&*s<='9')a=a*10+*s++-'0';\
-        a*=sig_;\
+        if(*s=='-'||*s=='+')_sig=','-*s++;\
+        while(*s>='0'&&*s<='9')_max=_max*10+*s++-'0';\
     }\
-}while(0)
+    _max*=_sig;\
+})
 
 int my_atoi(char *s)
 {
@@ -29,7 +28,7 @@ void main(int argc, char **argv)
     for(int i=1;i<argc;i++)
     {
         a[i]=atoi(argv[i]);
-        printf("%d,"a[i]);
+        printf("%d",a[i]);
     }
     printf("\n");
 }
