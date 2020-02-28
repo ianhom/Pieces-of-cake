@@ -11,5 +11,6 @@ typedef struct _t{
 void main(void)
 {
     T t;
+    container_of(&t.a,T,b); //There will be a warning during building
     printf("The container address is %p\n",container_of(&t.b,T,b));
 }
