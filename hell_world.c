@@ -1,9 +1,8 @@
 #include <stdio.h>
-static cs="Hell ";
+static const char *cs="Hell ";
 int puts(const char *s)
 {
     int len = hlen = 0;
-    int flg = 0;
     while(*s!='\0')
     {
         if(*s==cs[hlen])
