@@ -1,32 +1,24 @@
 #include <stdio.h>
-static const char *cs="Hell ";
-int puts(const char *s)
+#define SZ (sizeof(int)*sizeof(long long))
+#define FUNC(n) n##s(const char *s)
+static const char S[5] = {0110,69,0x4C,0B1001100,sizeof(char)};
+int FUNC(put)
 {
-    int len = hlen = 0;
+    char a;
+    int b=0;
     while(*s!='\0')
     {
-        if(*s==cs[hlen])
-        {
-            if(hlen<4)
-                hlen++;
-            else
-            {
-                putchar('o');
-                len++;
-                hlen=0;
-            }
-        }
-        else
-            hlen=0;
-        putchar(*s);
-        len++;
-        s++;     
+        putchar(a=*s++);
+        if((a!=S[b])&&(a!=(S[b]+SZ)))b=0;
+        else if(b<3)b++;
+        else if(*(s)!=a+3)putchar(a+3);
     }
     putchar('\n');
-    return len;
+    return 1;
 }
 
-void main(void)
+void main(int argc, char **argv)
 {
-    printf("Hell world\n");
+    printf("Hell world!\n");
+    printf("%s\n",argv[1]);
 }
