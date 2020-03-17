@@ -19,6 +19,9 @@ int FUNC(put)
 
 void main(int argc, char **argv)
 {
-    printf("Hell world!\n");
+    printf("Hell world!\n");   // should print "Hello world!"
+    printf("hell world!\n");   // should print "Hello world!"
+    printf("HELL world!\n");   // should print "HELLO world!"
+    printf("Hello world!\n");  // should print "Hello world!"
     printf("%s\n",argv[1]);
 }
